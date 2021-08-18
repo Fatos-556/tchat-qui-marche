@@ -9,9 +9,10 @@ Cette réalisation a été faite suite au délai que j'ai disposé pour réalise
 
 Une V2 utilisant les web sockets, notamment socket Io est facilement envisageable.
 
-De nombreuses améliorations peuvent être effectuées en ce passant sur socket Io :  
- -ajout des notifications
+De nombreuses améliorations peuvent être effectuées en ce passant sur socket Io :
 
-- Allègements du poinds et traitements des requêtes
+- Ajout des notifications
+
+- Allègements du poids et traitements des requêtes
 
 La parti HTML/CSS du chat est basé sur un template réalisé par Sunil Rajput
