@@ -12,7 +12,7 @@ Néanmoins, le projet <b>fonctionne</b>.
 
 Une V2 du tchat utilisant les web sockets, notamment socket Io est facilement <b>envisageable</b>.
 
-De nombreuses améliorations peuvent être effectuées en ce passant sur socket Io :
+De nombreuses améliorations peuvent être effectuées en utilisant socket Io :
 
 - Ajout des notifications
 
