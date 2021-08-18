@@ -2,7 +2,7 @@
   {% for message in messages %}
     {% if message.id_user != app.user.id %}
       <div class="incoming_msg_img">
-        <img src="https://ptetutorials.com/images/user-profile.png"
+        <img src="{{ asset('img/user-profile.png') }}"
           alt="sunil" />
       </div>
       <div class="received_msg">
