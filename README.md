@@ -3,11 +3,12 @@
 VEUILLEZ GÉNÉRER VOTRE BASE DE DONNÉE
 
 Projet réalisé sous Symfony.
-Le projet est basé sur PHP/AJAX. À noter que ce n'est pas le plus optimal.
+Le projet est basé sur PHP/AJAX. À noter que cette méthode n'est pas la plus optimale.
 
-Cette réalisation a été faite suite au délai que j'ai disposé pour réaliser le projet.
+Cette réalisation a été faite dans un délai assez court à cause de mes obligations professionnelles.
+Je n'ai pas pu réaliser l'ensemble du projet comme je le désirais.
 
-Une V2 utilisant les web sockets, notamment socket Io est facilement envisageable.
+Néanmoins, une V2 utilisant les web sockets, notamment socket Io est facilement <b>envisageable</b>.
 
 De nombreuses améliorations peuvent être effectuées en ce passant sur socket Io :
 
