@@ -1,0 +1,11 @@
+index:
+  path: /
+  controller: App\Controller\ConversationController::index
+
+conversation:
+  path: /conversation
+  controller: App\Controller\ConversationController::index
+
+login:
+  path: /login
+  controller: App\Controller\SecurityController::login
