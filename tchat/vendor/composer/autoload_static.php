@@ -602,12 +602,17 @@ class ComposerStaticInit60e4a56a539903818c15c9298ebc550e
     );
 
     public static $classMap = array (
+        'App\\Controller\\AjaxController' => __DIR__ . '/../..' . '/src/Controller/AjaxController.php',
         'App\\Controller\\ConversationController' => __DIR__ . '/../..' . '/src/Controller/ConversationController.php',
         'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
         'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
+        'App\\Controller\\SocketController' => __DIR__ . '/../..' . '/src/Controller/SocketController.php',
+        'App\\Entity\\Conversation' => __DIR__ . '/../..' . '/src/Entity/Conversation.php',
+        'App\\Entity\\ConversationMessage' => __DIR__ . '/../..' . '/src/Entity/ConversationMessage.php',
         'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
         'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\ConversationMessageRepository' => __DIR__ . '/../..' . '/src/Repository/ConversationMessageRepository.php',
         'App\\Repository\\ConversationRepository' => __DIR__ . '/../..' . '/src/Repository/ConversationRepository.php',
         'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'App\\Security\\LoginAuthentificatorAuthenticator' => __DIR__ . '/../..' . '/src/Security/LoginAuthentificatorAuthenticator.php',

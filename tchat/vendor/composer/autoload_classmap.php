@@ -6,12 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\AjaxController' => $baseDir . '/src/Controller/AjaxController.php',
     'App\\Controller\\ConversationController' => $baseDir . '/src/Controller/ConversationController.php',
     'App\\Controller\\RegistrationController' => $baseDir . '/src/Controller/RegistrationController.php',
     'App\\Controller\\SecurityController' => $baseDir . '/src/Controller/SecurityController.php',
+    'App\\Controller\\SocketController' => $baseDir . '/src/Controller/SocketController.php',
+    'App\\Entity\\Conversation' => $baseDir . '/src/Entity/Conversation.php',
+    'App\\Entity\\ConversationMessage' => $baseDir . '/src/Entity/ConversationMessage.php',
     'App\\Entity\\User' => $baseDir . '/src/Entity/User.php',
     'App\\Form\\RegistrationFormType' => $baseDir . '/src/Form/RegistrationFormType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
+    'App\\Repository\\ConversationMessageRepository' => $baseDir . '/src/Repository/ConversationMessageRepository.php',
     'App\\Repository\\ConversationRepository' => $baseDir . '/src/Repository/ConversationRepository.php',
     'App\\Repository\\UserRepository' => $baseDir . '/src/Repository/UserRepository.php',
     'App\\Security\\LoginAuthentificatorAuthenticator' => $baseDir . '/src/Security/LoginAuthentificatorAuthenticator.php',

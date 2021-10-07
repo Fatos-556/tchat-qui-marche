@@ -14,64 +14,50 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ConversationRepository extends ServiceEntityRepository
 {
-  public function __construct(ManagerRegistry $registry)
-  {
-    parent::__construct($registry, Conversation::class);
-  }
-
-  public function getTokenByIdUsers($id_current_user, $id_user)
-  {
-    $rawSql =
-      "SELECT c.token from conversation as c LEFT JOIN conversation as cc ON (c.token = cc.token) 
-      WHERE c.id_user = " .
-      $id_current_user .
-      " AND cc.id_user = " .
-      $id_user;
-    $stmt = $this->getEntityManager()
-      ->getConnection()
-      ->prepare($rawSql);
-    $stmt->execute([]);
-
-    return $stmt->fetch();
-  }
-
-  public function findAllIdsUsers()
-  {
-    $rawSql =
-      "SELECT id from conversation";
-     $stmt = $this->getEntityManager()
-      ->getConnection()
-      ->prepare($rawSql);
-    $stmt->execute([]);
-    return $stmt->fetchAll();
-  }
-
-  // /**
-  //  * @return Conversation[] Returns an array of Conversation objects
-  //  */
-  /*
-    public function findByExampleField($value)
+    public function __construct(ManagerRegistry $registry)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        parent::__construct($registry, Conversation::class);
     }
-    */
 
-  /*
-    public function findOneBySomeField($value): ?Conversation
+    public function getTokenByIdUsers($id_current_user, $id_user)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+
+        //        -- à revoir todo: ceci doit être traduit en DQL et quand je le fais elle ne marche avec POST de conversation.js : probleme = je retourne un objet qui ne peut pas être converti en int
+
+
+//      $query = $this->createQueryBuilder("c")
+//->select('c.token')
+//      ->LeftJoin('conversation', 'b', 'ON','c.token=b.token')
+//          ->andwhere("c.id_user ='".$id_current_user."'")
+//          ->andWhere("b.id_user ='".$id_user."'")
+//      ->getQuery()
+//      ->getResult();
+//      return $query;
+
+
+        $rawSql =
+            "SELECT c.token
+ from      conversation as c
+
+ LEFT JOIN    conversation as cc ON (c.token = cc.token)
+
+      WHERE c.id_user = " . $id_current_user .
+            " AND cc.id_user = " . $id_user;
+        $stmt = $this->getEntityManager()
+            ->getConnection()
+            ->prepare($rawSql);
+        $stmt->execute([]);
+
+        return $stmt->fetch();
     }
-    */
+
+    public function findAllIdsUsers()
+    {
+        $query = $this->createQueryBuilder("c")
+            ->select('c.id');
+
+        return $query;
+
+    }
+
 }

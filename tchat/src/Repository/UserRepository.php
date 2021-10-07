@@ -18,80 +18,81 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class UserRepository extends ServiceEntityRepository implements
-  PasswordUpgraderInterface
+    PasswordUpgraderInterface
 {
-  public function __construct(ManagerRegistry $registry)
-  {
-    parent::__construct($registry, User::class);
-  }
-
-  /**
-   * Used to upgrade (rehash) the user's password automatically over time.
-   */
-  public function upgradePassword(
-    PasswordAuthenticatedUserInterface $user,
-    string $newHashedPassword
-  ): void {
-    if (!$user instanceof User) {
-      throw new UnsupportedUserException(
-        sprintf('Instances of "%s" are not supported.', \get_class($user))
-      );
-    }
-
-    $user->setPassword($newHashedPassword);
-    $this->_em->persist($user);
-    $this->_em->flush();
-  }
-
-  // /**
-  //  * @return User[] return admin users
-  //  */
-
-  // /**
-  //  * @return User[] Returns an array of User objects
-  //  */
-  /*
-    public function findByExampleField($value)
+    public function __construct(ManagerRegistry $registry)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        parent::__construct($registry, User::class);
     }
-    */
 
-  /*
-    public function findOneBySomeField($value): ?User
+    /**
+     * Used to upgrade (rehash) the user's password automatically over time.
+     */
+    public function upgradePassword(
+        PasswordAuthenticatedUserInterface $user,
+        string $newHashedPassword
+    ): void
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if (!$user instanceof User) {
+            throw new UnsupportedUserException(
+                sprintf('Instances of "%s" are not supported.', \get_class($user))
+            );
+        }
+
+        $user->setPassword($newHashedPassword);
+        $this->_em->persist($user);
+        $this->_em->flush();
     }
-    */
 
-  public function findAllUsers($id)
-  {
-    $query = $this->createQueryBuilder("u")
-      ->andWhere("u.id != " . $id)
-      ->getQuery()
-      ->getResult();
-    return $query;
-  }
+    // /**
+    //  * @return User[] return admin users
+    //  */
 
-  public function findAllUsersByRoleKln($id, $role)
-  {
-    $query = $this->createQueryBuilder("u")
-      ->andWhere("u.id != " . $id)
-      ->andWhere("u.role_kln = '" . $role."'")
-      ->getQuery()
-      ->getResult();
-    return $query;
-  }
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    /*
+      public function findByExampleField($value)
+      {
+          return $this->createQueryBuilder('u')
+              ->andWhere('u.exampleField = :val')
+              ->setParameter('val', $value)
+              ->orderBy('u.id', 'ASC')
+              ->setMaxResults(10)
+              ->getQuery()
+              ->getResult()
+          ;
+      }
+      */
+
+    /*
+      public function findOneBySomeField($value): ?User
+      {
+          return $this->createQueryBuilder('u')
+              ->andWhere('u.exampleField = :val')
+              ->setParameter('val', $value)
+              ->getQuery()
+              ->getOneOrNullResult()
+          ;
+      }
+      */
+
+    public function findAllUsers($id)
+    {
+        $query = $this->createQueryBuilder("u")
+            ->andWhere("u.id != " . $id)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+    public function findAllUsersByRole($id, $role)
+    {
+        $query = $this->createQueryBuilder("u")
+            ->andWhere("u.id != " . $id)
+            ->andWhere("u.role = '" . $role . "'")
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
 }

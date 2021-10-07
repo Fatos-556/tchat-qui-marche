@@ -1,77 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>
-      {% block title %}
-        Tchat!
-      {% endblock %}
+        {% block title %}
+            Tchat!
+        {% endblock %}
     </title>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
-      <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-        crossorigin="anonymous" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Raleway:wght@100&display=swap"
-        rel="stylesheet" />
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        type="text/css"
-        rel="stylesheet" />
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Raleway:wght@100&display=swap"
+              rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+              type="text/css"
+              rel="stylesheet"/>
     {% endblock %}
 
     {% block javascripts %}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="{{ asset('js/conversation.js') }}"></script>
-      {# {{ encore_entry_script_tags('app') }} #}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ asset('js/conversation.js') }}"></script>
+        {# {{ encore_entry_script_tags('app') }} #}
     {% endblock %}
-  </head>
-  <body>
-    {% block body %}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light loader-hide-this">
-        <a class="navbar-brand" href="#">KLN-TCHAT</a>
+</head>
+<body>
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light loader-hide-this">
+        <a class="navbar-brand" href="#">CHAT</a>
         <button class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            {% if app.user %}
-              <li class="nav-item hello-user">
-                Bonjour {{ app.user.username }}
-              </li>
-              <li class="nav-item">
-                <a class="nav-link btn-secondary pull-right"
-                  href="{{ path('app_logout') }}">
-                  Déconnexion
-                </a>
-              </li>
-            {% endif %}
-          </ul>
+            <ul class="navbar-nav">
+                {% if app.user %}
+                    <li class="nav-item hello-user">
+                        Bonjour {{ app.user.username }}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-secondary pull-right"
+                           href="{{ path('app_logout') }}">
+                            Déconnexion
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-      </nav>
-      <div class="container">
+    </nav>
+    <div class="container">
         {% block body_content %}
 
         {% endblock %}
-      </div>
-    {% endblock %}
-  </body>
-  {% block footer %}
-    <div class="footer">
-      <p class="text-center top_spac">
-        <a target="_blank" href="https://kln-web.fr/">JONVILLE Kellian</a>
-      </p>
     </div>
-  {% endblock %}
+{% endblock %}
+</body>
+{% block footer %}
+
+{% endblock %}
 </html>

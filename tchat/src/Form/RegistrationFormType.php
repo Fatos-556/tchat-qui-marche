@@ -15,50 +15,49 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
-    $builder
-      ->add("email")
-      ->add("name")
-      ->add("agreeTerms", CheckboxType::class, [
-        "mapped" => false,
-        "constraints" => [
-          new IsTrue([
-            "message" => "You should agree to our terms.",
-          ]),
-        ],
-      ])
-      ->add('role_kln', ChoiceType::class, [
-    'choices' => [
-        'User' => 'user',
-        'Admin' => 'admin',
-    ],
-])
-      
-      ->add("plainPassword", PasswordType::class, [
-        // instead of being set onto the object directly,
-        // this is read and encoded in the controller
-        "mapped" => false,
-        "attr" => ["autocomplete" => "new-password"],
-        "constraints" => [
-          new NotBlank([
-            "message" => "Please enter a password",
-          ]),
-          new Length([
-            "min" => 6,
-            "minMessage" =>
-              "Your password should be at least {{ limit }} characters",
-            // max length allowed by Symfony for security reasons
-            "max" => 4096,
-          ]),
-        ],
-      ]);
-  }
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add("email")
+            ->add("name")
+            ->add("agreeTerms", CheckboxType::class, [
+                "mapped" => false,
+                "constraints" => [
+                    new IsTrue([
+                        "message" => "You should agree to our terms.",
+                    ]),
+                ],
+            ])
+            ->add('role', ChoiceType::class, [
+                'choices' => [
+                    'User' => 'user',
+                    'Admin' => 'admin',
+                ],
+            ])
+            ->add("plainPassword", PasswordType::class, [
+                // instead of being set onto the object directly,
+                // this is read and encoded in the controller
+                "mapped" => false,
+                "attr" => ["autocomplete" => "new-password"],
+                "constraints" => [
+                    new NotBlank([
+                        "message" => "Please enter a password",
+                    ]),
+                    new Length([
+                        "min" => 6,
+                        "minMessage" =>
+                            "Your password should be at least {{ limit }} characters",
+                        // max length allowed by Symfony for security reasons
+                        "max" => 4096,
+                    ]),
+                ],
+            ]);
+    }
 
-  public function configureOptions(OptionsResolver $resolver)
-  {
-    $resolver->setDefaults([
-      "data_class" => User::class,
-    ]);
-  }
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            "data_class" => User::class,
+        ]);
+    }
 }

@@ -35,7 +35,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   /**
    * @ORM\Column(type="string", nullable=true)
    */
-  private $role_kln;
+  private $role;
 
   /**
    * @ORM\Column(type="json")
@@ -77,9 +77,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     return $this;
   }
 
-   public function setRoleKln(string $role_kln): self
+   public function setRole(string $role): self
   {
-    $this->role_kln = $role_kln;
+    $this->role = $role;
 
     return $this;
   }
@@ -102,9 +102,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     return (string) $this->name;
   }
 
-  public function getRoleKln(): string
+  public function getRole(): string
   {
-    return (string) $this->role_kln;
+    return (string) $this->role;
   }
 
   /**
